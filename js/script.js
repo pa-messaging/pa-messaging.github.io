@@ -45,6 +45,9 @@ function generateOutput() {
 
     var deathdoc = document.getElementById('deathdoc').value;
     var deathreq = document.getElementById('deathreq').value;
+
+    var aivdoc = document.getElementById('aivdoc').value;
+    var aivreq = document.getElementById('aivreq').value;
     
     var hhidField = document.getElementById('hhidField').value;
     var rop1stname = document.getElementById('rop1stname').value;
@@ -69,11 +72,11 @@ function generateOutput() {
             break;
 
             case 'lawful':      
-                outputText += "Hello " + firstLast + ",<br><br>" + "We were unable to verify this document for Lawful Presence Verification.<br>Here's what you submitted: " + lawfuldoc + ". However, we need " + lawfulreq + " in order to process your request. You will have 90 days from the day you received your eligibility notice to get the proper documentation submitted. We understand that these processes can sometimes be confusing and frustrating, but we are here to help you navigate the process at 844-844-8040, with any additional questions. You can also check out our site for a list of acceptable documents at<br>" + "https://help.pennie.com/hc/en-us/articles/360050322494-Documents-to-confirm-U-S-Citizenship" + "<br><br>" + "Thank you for choosing Pennie.<br><br>" + "Regards,<br>Pennie Customer Service";
+                outputText += "Hello " + firstLast + ",<br><br>" + "We were unable to verify this document for Lawful Presence Verification.<br>Here's what you submitted: " + lawfuldoc + ". However, we need " + lawfulreq + " in order to process your request. You will have 90 days from the day you received your eligibility notice to get the proper documentation submitted. We understand that these processes can sometimes be confusing and frustrating, but we are here to help you navigate the process at 844-844-8040, with any additional questions. You can also check out our site for a list of acceptable documents at<br>" + "https://help.pennie.com/hc/en-us/articles/360054981154-What-documents-should-you-submit-to-resolve-a-Data-Matching-Issue-" + "<br><br>" + "Thank you for choosing Pennie.<br><br>" + "Regards,<br>Pennie Customer Service";
             break;
 
             case 'incarceration':      
-                outputText += "Hello " + firstLast + ",<br><br>" + "We were unable to verify this document for Incarceration Verification.<br>Here's what you submitted: " + incarcerationdoc + ". However, we need " + incarcerationreq + " in order to process your request. You will have 90 days from the day you received your eligibility notice to get the proper documentation submitted. We understand that these processes can sometimes be confusing and frustrating, but we are here to help you navigate the process at 844-844-8040, with any additional questions. You can also check out our site for a list of acceptable documents at<br>" + "https://help.pennie.com/hc/en-us/articles/360050322494-Documents-to-confirm-U-S-Citizenship" + "<br><br>" + "Thank you for choosing Pennie.<br><br>" + "Regards,<br>Pennie Customer Service";
+                outputText += "Hello " + firstLast + ",<br><br>" + "We were unable to verify this document for Incarceration Verification.<br>Here's what you submitted: " + incarcerationdoc + ". However, we need " + incarcerationreq + " in order to process your request. You will have 90 days from the day you received your eligibility notice to get the proper documentation submitted. We understand that these processes can sometimes be confusing and frustrating, but we are here to help you navigate the process at 844-844-8040, with any additional questions. You can also check out our site for a list of acceptable documents at<br>" + "https://help.pennie.com/hc/en-us/articles/360054981154-What-documents-should-you-submit-to-resolve-a-Data-Matching-Issue-" + "<br><br>" + "Thank you for choosing Pennie.<br><br>" + "Regards,<br>Pennie Customer Service";
             break;
 
             case 'internal':      
@@ -81,15 +84,15 @@ function generateOutput() {
             break;
 
             case 'ssn':      
-                outputText += "Hello " + firstLast + ",<br><br>" + "We were unable to verify this document for Social Security Verification.<br>Here's what you submitted: " + ssndoc + ". However, we need " + ssnreq + " in order to process your request. You will have 90 days from the day you received your eligibility notice to get the proper documentation submitted. We understand that these processes can sometimes be confusing and frustrating, but we are here to help you navigate the process at 844-844-8040, with any additional questions. You can also check out our site for a list of acceptable documents at<br>" + "https://help.pennie.com/hc/en-us/articles/360050322494-Documents-to-confirm-U-S-Citizenship" + "<br><br>" + "Thank you for choosing Pennie.<br><br>" + "Regards,<br>Pennie Customer Service";
+                outputText += "Hello " + firstLast + ",<br><br>" + "We were unable to verify this document for Social Security Verification.<br>Here's what you submitted: " + ssndoc + ". However, we need " + ssnreq + " in order to process your request. You will have 90 days from the day you received your eligibility notice to get the proper documentation submitted. We understand that these processes can sometimes be confusing and frustrating, but we are here to help you navigate the process at 844-844-8040, with any additional questions. You can also check out our site for a list of acceptable documents at<br>" + "https://help.pennie.com/hc/en-us/articles/360054981154-What-documents-should-you-submit-to-resolve-a-Data-Matching-Issue-" + "<br><br>" + "Thank you for choosing Pennie.<br><br>" + "Regards,<br>Pennie Customer Service";
             break;
 
             case 'death':      
-                outputText += "Hello " + firstLast + ",<br><br>" + "We were unable to verify this document for Death Verification.<br>Here's what you submitted: " + deathdoc + ". However, we need " + deathreq + " in order to process your request. You will have 90 days from the day you received your eligibility notice to get the proper documentation submitted. We understand that these processes can sometimes be confusing and frustrating, but we are here to help you navigate the process at 844-844-8040, with any additional questions. You can also check out our site for a list of acceptable documents at<br>" + "https://help.pennie.com/hc/en-us/articles/360050322494-Documents-to-confirm-U-S-Citizenship" + "<br><br>" + "Thank you for choosing Pennie.<br><br>" + "Regards,<br>Pennie Customer Service";
+                outputText += "Hello " + firstLast + ",<br><br>" + "We were unable to verify this document for Death Verification.<br>Here's what you submitted: " + deathdoc + ". However, we need " + deathreq + " in order to process your request. You will have 90 days from the day you received your eligibility notice to get the proper documentation submitted. We understand that these processes can sometimes be confusing and frustrating, but we are here to help you navigate the process at 844-844-8040, with any additional questions. You can also check out our site for a list of acceptable documents at<br>" + "https://help.pennie.com/hc/en-us/articles/360054981154-What-documents-should-you-submit-to-resolve-a-Data-Matching-Issue-" + "<br><br>" + "Thank you for choosing Pennie.<br><br>" + "Regards,<br>Pennie Customer Service";
             break;
 
             case 'aiv':      
-                outputText += "Testing";
+                outputText += "Hello " + firstLast + ",<br><br>" + "We were unable to verify this document for Income Verification.<br>Here's what you submitted: " + aivdoc + ". However, we need " + aivreq + " in order to process your request. You will have 30 days from the day you received your eligibility notice to get the proper documentation submitted. We understand that these processes can sometimes be confusing and frustrating, but we are here to help you navigate the process at 844-844-8040, with any additional questions. You can also check out our site for a list of acceptable documents at<br>" + "https://help.pennie.com/hc/en-us/articles/360051084873-Documents-to-confirm-your-household-income" + "<br><br>" + "Thank you for choosing Pennie.<br><br>" + "Regards,<br>Pennie Customer Service";
             break;
 
             case 'review':      
