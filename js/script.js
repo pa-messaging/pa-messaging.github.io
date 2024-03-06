@@ -43,8 +43,65 @@ function generateOutput() {
         var outputText = "";
         
         switch (selectedOption) {  
-        case 'rop':      
-            outputText += rop1stname + " " + roplastname + " (ID:" + hhidField + ") called in requesting reinstatement of the APTC amount of $" + ropaptc + " on the plan " + ropplan + " with Policy ID#" + roppolicy + " due to the expiration of ROP on " + ropexpiration + "<br><br>" + "#Verbal_Attestation_Completed_By_" + rop1stname + "_" + roplastname + "_For_" + ropaptc + "_On_" + ropdate;
+            
+            case 'income':      
+                outputText += "Testing";
+            break;
+
+            case 'citizenship':      
+                outputText += "Testing";
+            break;
+
+            case 'incarceration':      
+                outputText += "Testing";
+            break;
+
+            case 'internal':      
+                outputText += "Testing";
+            break;
+
+            case 'ssn':      
+                outputText += "Testing";
+            break;
+
+            case 'death':      
+                outputText += "Testing";
+            break;
+
+            case 'aiv':      
+                outputText += "Testing";
+            break;
+
+            case 'review':      
+                outputText += "Testing";
+            break;
+
+            case 'nonpennie':      
+                outputText += "Testing";
+            break;
+
+            case 'nonesi':      
+                outputText += "Testing";
+            break;
+
+            case 'over':      
+                outputText += "Testing";
+            break;
+
+            case 'residency':      
+                outputText += "Testing";
+            break;
+
+            case 'ridp':      
+                outputText += "Testing";
+            break;
+
+            case 'rop':      
+                outputText += "Testing";
+            break;
+
+            case 'rop':      
+                outputText += rop1stname + " " + roplastname + " (ID:" + hhidField + ") called in requesting reinstatement of the APTC amount of $" + ropaptc + " on the plan " + ropplan + " with Policy ID#" + roppolicy + " due to the expiration of ROP on " + ropexpiration + "<br><br>" + "#Verbal_Attestation_Completed_By_" + rop1stname + "_" + roplastname + "_For_" + ropaptc + "_On_" + ropdate;
             break;
 
         default:
