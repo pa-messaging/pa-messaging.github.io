@@ -109,7 +109,7 @@ function generateOutput() {
             break;
 
             case 'nonesi':      
-                outputText += "Testing";
+                outputText += "Hello " + firstLast + ",<br><br>" + "Pennie has received your Non-ESI Minimum Essential Coverage document(s). However, we are unable to accept the submitted documentation, as it does not meet policy standards. If you are unable to provide one of the documents listed in the linked FAQ What does &ldquo;NonESI Minimum Essential Coverage&rdquo; mean? - Pennie Help, you can submit a Pennie approved attestation form located here: " + "https://agency.pennie.com/wp-content/uploads/2022/10/Attestation-of-Non-ESI-Minimum-Essential-Coverage-Form-Fillable1.3.pdf" + "<br><br>" + "If you have any questions, please call Pennie Customer Service at 1-844-844-8040." + "<br><br>" + "Thank you for choosing Pennie.<br><br>" + "Regards,<br>Pennie Customer Service";
             break;
 
             case 'over':      
