@@ -48,6 +48,8 @@ function generateOutput() {
 
     var aivdoc = document.getElementById('aivdoc').value;
     var aivreq = document.getElementById('aivreq').value;
+
+    var ridpdoc = document.getElementById('ridpdoc').value;
     
     var hhidField = document.getElementById('hhidField').value;
     var rop1stname = document.getElementById('rop1stname').value;
@@ -116,7 +118,7 @@ function generateOutput() {
             break;
 
             case 'ridp':      
-                outputText += "Testing";
+                outputText += "Hello " + firstLast + ",<br><br>" + "We were unable to verify this document for RIDP: " + ridpdoc + "<br>" + "Additional information is required: We need an official document that provides your first and last name along with identifying information such as DOB . Please submit proof of RIDP for further verification. You can find a list of documents to confirm your household income at Pennie.com. You have 90 days from the day you received your eligibility notice to get the proper documentation submitted. For additional information please contact us at 844-844-8040.<br><br>" + "Thank you for choosing Pennie.<br><br>" + "Regards,<br>Pennie Customer Service";
             break;
 
             case 'rop':      
