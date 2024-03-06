@@ -216,39 +216,7 @@ button#clear-button {
     margin-right: 10px;
 }
 
-#textjirahide.hidden {
-    display: none;
-}
-
-#enfrephide.hidden {
-    display: none;
-}
-
-#cnfrephide.hidden {
-    display: none;
-}
-
-#tnfrephide.hidden {
-    display: none;
-}
-
-#reinstaterephide.hidden {
-    display: none;
-}
-
 #noteshide.hidden {
-    display: none;
-}
-
-#posescalatehide.hidden {
-    display: none;
-}
-
-#nonescalatehide.hidden {
-    display: none;
-}
-
-#backdatehide.hidden {
     display: none;
 }
 
