@@ -19,11 +19,68 @@
 				<label for="type" >Type of Ticket:</label>
 				<select id="type" name="type" onchange="showQuestions()">
 					<option value="placeholder">Select Ticket Type</option>
+                    <option value="income">Income Document Rejection</option>
+                    <option value="citizenship">Citizenship Document Rejection</option>
+                    <option value="lawful">Lawful Presence Document Rejection</option>
+                    <option value="incarceration">Incarceration Document Rejection</option>
+                    <option value="internal">Internal Rejectiong / Approval Comment</option>
+                    <option value="ssn">Social Security Number Document Rejection</option>
+                    <option value="death">Death Document Rejection</option>
+                    <option value="aiv">AIV Rejection</option>
+                    <option value="review">Re-Review Approval</option>
+                    <option value="nonpennie">Non-Pennie Form SAL Rejection</option>
+                    <option value="nonesi">Non-ESI Document Rejection</option>
+                    <option value="over">Income Over Threshold Rejection</option>
+                    <option value="residency">Residency Document Rejection</option>
+                    <option value="ridp">RIDP Document Rejection</option>
                     <option value="rop">Verification Document for ROP Reinstatement</option>
 				</select>
 			</div>
 			
-			<div class="question-set" id="ropQuestions">
+
+			<div class="question-set" id="incomeQuestions">
+            </div>
+
+            <div class="question-set" id="citizenshipQuestions">
+            </div>
+
+            <div class="question-set" id="lawfulQuestions">
+            </div>
+
+            <div class="question-set" id="incarcerationQuestions">
+            </div>
+
+            <div class="question-set" id="internalQuestions">
+            </div>
+
+            <div class="question-set" id="ssnQuestions">
+            </div>
+
+            <div class="question-set" id="deathQuestions">
+            </div>
+
+            <div class="question-set" id="aivQuestions">
+            </div>
+
+            <div class="question-set" id="reviewQuestions">
+            </div>
+
+            <div class="question-set" id="nonpennieQuestions">
+            </div>
+
+            <div class="question-set" id="nonesiQuestions">
+            </div>
+
+            <div class="question-set" id="overQuestions">
+            </div>
+
+            <div class="question-set" id="residencyQuestions">
+            </div>
+
+            <div class="question-set" id="ridpQuestions">
+            </div>
+
+            <div class="question-set" id="ropQuestions">
 				<h4>Instructions:</h4>
 				<h5>Created for those requesting ROP Reinstatements. Should only be done for Income ROPs as directed by your TL/Sup. Tickets are worked while customer remains on the line and resolved out during the call by TL/Sup.</h5>
 				
@@ -81,22 +138,6 @@
 	
 	<div id="output-panel">
 		<h3>Generated Ticket</h3>
-		<div id="subject"></div>
-			<button id="copy-subject-button" onclick="copySubject()">Copy Subject</button>
-		<div class="ticDetails">
-			<div class="grid-item">
-				<span>Ticket Type:</span>
-				<h5 id="ticType"></h5>
-			</div>
-			<div class="grid-item">
-				<span>Ticket Subtype:</span>
-				<h5 id="ticSub"></h5>
-			</div>
-			<div class="grid-item">
-				<span>Priority:</span>
-				<h5 id="ticPriority"></h5>
-			</div>
-		</div>
 		<div id="output"></div>
 			<button id="copy-output-button" onclick="copyOutput()">Copy Ticket</button>
 		<h6>After copying, paste the Ticket into "Ticket Description" with CTRL + V or Right Click</h6>

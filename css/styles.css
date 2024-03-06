@@ -193,17 +193,6 @@ button#clear-button {
     white-space: pre-wrap;
 }
 
-#subject {
-    width: 90%;
-    max-width: 90%;
-    margin: 10px;
-    border: 1px solid navy;
-    border-radius: 5px;
-    padding: 20px;
-    color: #1b1b1b;
-    white-space: pre-wrap;
-}
-
 #nameSection label {
     margin-right: 10px;
 }
@@ -269,20 +258,4 @@ button#clear-button {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-}
-
-.ticDetails {
-    padding: 10px;
-    padding-bottom: 0;
-    display: grid;
-    width: 96%;
-    gap: 10px 10px;
-    grid-template-columns: auto auto auto;
-}
-
-.grid-item {
-    text-align: left;
-    border: 1px solid navy;
-    border-radius: 5px;
-    margin-bottom: 0px;
 }

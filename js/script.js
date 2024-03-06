@@ -114,16 +114,6 @@ function clearForm() {
             input.value = '';
         }
     });    
-    
-    document.getElementById('noteshide').classList.add('hidden');
-    document.getElementById('backdatehide').classList.add('hidden');
-    document.getElementById('reinstaterephide').classList.add('hidden');
-    document.getElementById('nonescalatehide').classList.add('hidden');
-    document.getElementById('posescalatehide').classList.add('hidden');
-    document.getElementById('tnfrephide').classList.add('hidden');
-    document.getElementById('cnfrephide').classList.add('hidden');
-    document.getElementById('enfrephide').classList.add('hidden');
-    document.getElementById('textjirahide').classList.add('hidden');
 
     document.getElementById('firstLast').value = '';
     document.getElementById('nameSection').style.display = 'none';
