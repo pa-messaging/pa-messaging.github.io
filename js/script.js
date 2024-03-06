@@ -22,9 +22,6 @@ function showQuestions() {
         nameSection.style.display = selectedOption !== 'placeholder' ? 'flex' : 'none';
         hhidSection.style.display = selectedOption !== 'placeholder' ? 'flex' : 'none';
     }
-    
-    var notesSection = document.getElementById('notesSection');
-    notesSection.style.display = selectedOption !== 'placeholder' ? 'block' : 'none';
 }
 
 function generateOutput() {
@@ -48,7 +45,6 @@ function generateOutput() {
         switch (selectedOption) {  
         case 'rop':      
             outputText += rop1stname + " " + roplastname + " (ID:" + hhidField + ") called in requesting reinstatement of the APTC amount of $" + ropaptc + " on the plan " + ropplan + " with Policy ID#" + roppolicy + " due to the expiration of ROP on " + ropexpiration + "<br><br>" + "#Verbal_Attestation_Completed_By_" + rop1stname + "_" + roplastname + "_For_" + ropaptc + "_On_" + ropdate;
-            outputText += additionalNotes;
             break;
 
         default:
@@ -69,20 +65,6 @@ function generateOutput() {
         document.getElementById('copy-output-button').classList.add('generated');    }
 }
 
-function toggleAddNotes() {
-    var addNotesCheckbox = document.getElementById('addnotes');
-    var notesField = document.getElementById('notesField');
-    var addNotes = addNotesCheckbox.checked;
-
-    if (addNotes) {
-        additionalNotes = "<br><br>" + notesField.value;
-        document.getElementById('noteshide').classList.remove('hidden');
-    } else {
-        additionalNotes = '';
-        document.getElementById('noteshide').classList.add('hidden');
-    }
-}
-
 function clearForm() {
     var inputs = document.querySelectorAll('input[type="text"], input[type="number"], input[type="checkbox"], select, textarea');
     
@@ -99,9 +81,6 @@ function clearForm() {
     
     document.getElementById('hhidField').value = '';
     document.getElementById('hhidSection').style.display = 'none';
-
-    document.getElementById('notesField').value = '';
-    document.getElementById('notesSection').style.display = 'none';
 
     document.getElementById('type').selectedIndex = 0;
 

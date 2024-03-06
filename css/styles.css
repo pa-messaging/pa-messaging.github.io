@@ -201,14 +201,6 @@ button#clear-button {
     margin-right: 10px;
 }
 
-#notesSection label {
-    margin-right: 10px;
-}
-
-#noteshide.hidden {
-    display: none;
-}
-
 .question-set label {
     margin-top: 10px;
 }
@@ -229,10 +221,6 @@ button#clear-button {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.notes {
-    display: none;
 }
 
 .visible {
