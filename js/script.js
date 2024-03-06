@@ -44,24 +44,9 @@ function generateOutput() {
     
     if (questionSet) {
         var outputText = "";
-        var subjectText = "";
-        var ticTypeText = "";
-        var ticSubText = "";
-        var ticPriorityText = "";
-
-        questionSet.querySelectorAll('input[type="text"]').forEach(function (input) {
-            var question = input.previousElementSibling.innerText.replace(':', '').trim();
-            var answer = input.value;
-        });
         
         switch (selectedOption) {  
-        case 'rop':
-            ticTypeText += "ROP";
-            ticSubText += "ROP";
-            ticPriorityText += "Medium";
-
-            subjectText += "Verification Document for ROP Reinstatement";
-                
+        case 'rop':      
             outputText += rop1stname + " " + roplastname + " (ID:" + hhidField + ") called in requesting reinstatement of the APTC amount of $" + ropaptc + " on the plan " + ropplan + " with Policy ID#" + roppolicy + " due to the expiration of ROP on " + ropexpiration + "<br><br>" + "#Verbal_Attestation_Completed_By_" + rop1stname + "_" + roplastname + "_For_" + ropaptc + "_On_" + ropdate;
             outputText += additionalNotes;
             break;
@@ -71,10 +56,6 @@ function generateOutput() {
     }
 
         document.getElementById('output').innerHTML = outputText;
-        document.getElementById('subject').innerHTML = subjectText;
-        document.getElementById('ticType').innerHTML = ticTypeText;
-        document.getElementById('ticSub').innerHTML = ticSubText;
-        document.getElementById('ticPriority').innerHTML = ticPriorityText;
         
         var outputPanel = document.getElementById('output-panel');
         outputPanel.style.width = '100%';
@@ -85,9 +66,7 @@ function generateOutput() {
         outputPanel.style.borderStyle = 'solid';
         outputPanel.style.boxShadow = '0 0 8px 8px rgba(34, 139, 34, 0.4)';
         
-        document.getElementById('copy-output-button').classList.add('generated');
-        document.getElementById('copy-subject-button').classList.add('generated');
-    }
+        document.getElementById('copy-output-button').classList.add('generated');    }
 }
 
 function toggleAddNotes() {
@@ -131,11 +110,7 @@ function clearForm() {
         set.classList.remove('visible');
     });
 
-    document.getElementById('subject').innerHTML = '';
     document.getElementById('output').innerHTML = '';
-    document.getElementById('ticType').innerHTML = '';
-    document.getElementById('ticSub').innerHTML = '';
-    document.getElementById('ticPriority').innerHTML = '';
 
     var outputPanel = document.getElementById('output-panel');
     outputPanel.style.width = '100%';
@@ -147,20 +122,6 @@ function clearForm() {
     outputPanel.style.boxShadow = 'none';
 
     document.getElementById('copy-output-button').classList.remove('generated');
-    document.getElementById('copy-subject-button').classList.remove('generated');
-}
-
-function copySubject() {
-    var subjectContent = document.getElementById('subject').innerText;
-
-    var textarea = document.createElement('textarea');
-    textarea.value = subjectContent;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-
-    alert('Subject copied to clipboard!');
 }
 
 function copyOutput() {
