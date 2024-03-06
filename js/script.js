@@ -105,7 +105,7 @@ function generateOutput() {
             break;
 
             case 'nonpennie':      
-                outputText += "Testing";
+                outputText += "Hello " + firstLast + ",<br><br>" + "We were unable to verify this document for Income Verification.<br><br>" + "Here's what you submitted: a written/typed self attestation letter. We no longer accept typed or hand written letters as we have done previously, please refer to the our new income verification self attestation form on our website. " + "https://agency.pennie.com/wp-content/uploads/2022/10/Income-Attestation_Form-Fillable1.3-2.pdf" + "<br>" + "However, along with the Pennie approved self-attestation letter providing a detailed explanation of why the income in the document is different from the income stated in the application, we also need a supporting document such as a most recent Tax Return, Paystub, or other reported document, if you have not already submitted such a document.<br>" + "You will have 90 days from the day you received your eligibility notice to get the proper documentation submitted. We understand that these processes can sometimes be confusing and frustrating, but we are here to help you navigate the process at 844-844-8040, with any additional questions. You can also check out our site for a list of acceptable documents at " + "https://help.pennie.com/hc/en-us/articles/360051084873-Documents-to-confirm-your-household-income" + "<br><br>" + "Thank you for choosing Pennie.<br><br>" + "Regards,<br>Pennie Customer Service";
             break;
 
             case 'nonesi':      
