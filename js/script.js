@@ -36,6 +36,9 @@ function generateOutput() {
 
     var lawfuldoc = document.getElementById('lawfuldoc').value;
     var lawfulreq = document.getElementById('lawfulreq').value;
+
+    var incarcerationdoc = document.getElementById('incarcerationdoc').value;
+    var incarcerationreq = document.getElementById('incarcerationreq').value;
     
     var hhidField = document.getElementById('hhidField').value;
     var rop1stname = document.getElementById('rop1stname').value;
@@ -64,7 +67,7 @@ function generateOutput() {
             break;
 
             case 'incarceration':      
-                outputText += "Testing";
+                outputText += "Hello " + firstLast + ",<br><br>" + "We were unable to verify this document for Incarceration Verification.<br>Here's what you submitted " + incarcerationdoc + ". However, we need " + incarcerationreq + " in order to process your request. You will have 90 days from the day you received your eligibility notice to get the proper documentation submitted. We understand that these processes can sometimes be confusing and frustrating, but we are here to help you navigate the process at 844-844-8040, with any additional questions. You can also check out our site for a list of acceptable documents at<br>" + "https://help.pennie.com/hc/en-us/articles/360050322494-Documents-to-confirm-U-S-Citizenship" + "<br><br>" + "Thank you for choosing Pennie.<br><br>" + "Regards,<br>Pennie Customer Service";
             break;
 
             case 'internal':      
