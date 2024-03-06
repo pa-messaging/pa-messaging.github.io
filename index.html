@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+	<title>Pennie Ticket Driver</title>
+</head>
+
+<body>
+<!-- Page Title, future addition of PA Logo will go here -->
+<h1>Pennie DMI Messaging</h1>
+
+<main>
+	<form id="paTicketDriver">
+		<div class="form-column">
+			<div>
+				<!-- Here is where you can add more ticket types to the dropdown, make sure the value is unique -->
+				<label for="type" >Type of Ticket:</label>
+				<select id="type" name="type" onchange="showQuestions()">
+					<option value="placeholder">Select Ticket Type</option>
+					<option value="enf">Enrollment Not Found</option>
+					<option value="cnf">Cancellation Not Found</option>
+					<option value="tnf">Termination Not Found</option>
+					<option value="snf">Subsidy Not Found</option>
+					<option value="billing">Billing Issues</option>
+					<option value="reinstatement">Reinstatement Request</option>
+					<option value="enstatus">Enrollment Status - Pending</option>
+					<option value="correction">Name/DOB/Gender/Address Correction</option>
+					<option value="retro">30-Day Retroactive Termination Request</option>
+					<option value="cancellation">Cancellation Request</option>
+					<option value="backdate">Backdate Request</option>
+					<option value="aptc">Apply APTC Request</option>
+					<option value="retromed">Retroactive Termination Medicaid</option>
+					<option value="switch">Primary/Self Switch</option>
+					<option value="verification">Verification Error</option>
+					<option value="broker">Broker Unable to Access Account</option>
+					<option value="assister">Assister Unable to Access Account</option>
+					<option value="tax">1095-A Correction</option>
+					<option value="over">HH with a Dependant Over 26</option>
+					<option value="error">System Error/ Technical Issue</option>
+					<option value="rop">Verification Document for ROP Reinstatement</option>
+					<option value="posappeal">Complaint - Possible Appeal</option>
+					<option value="nonappeal">Complaint - Non-Appealable</option>
+					<option value="text">Complaint - Text Message Complaint</option>
+					<option value="maissue">MA Account Access Issue</option>
+					<option value="remove">Pennie Account Removal</option>
+					<option value="unsub">Unsubscribe from Email Notifications</option>
+					<option value="faxunassigned">Fax Template - Unnasigned Document</option>
+					<option value="faxreturned">Fax Template - Returned Notice</option>
+					<option value="highcall">High Call Volume Callback Comment</option>
+					<option value="overflow">OEP Overflow</option>
+					<option value="revfiled">REV-1882 Filed Attestation</option>
+					<option value="revvendor">REV-1882 Unavailable (Vendor Supported)</option>
+					<option value="revdor">REV-1882 Unavailable (DOR)</option>
+				</select>
+			</div>
+
+			<!-- The div below is what will populate on the form -->
+			<!-- Ensure the class is always set to question-set -->
+			<!-- The id is the value from the relevant dropdown option above followed by Questions -->
+			<!-- Ensure Questions is capitalized, no spaces, nothing after -->
+			<div class="question-set" id="enfQuestions">
+				<h4>Instructions:</h4>
+				<h5>Create when we show the customer's enrollment or enrollment information accurate and the carrier sees anything different.</h5>
+				<label for="enfcarrier">Carrier Name:</label>
+				<input type="text" id="enfcarrier" name="enfcarrier">
+				
+				<label for="enfpolicy">Policy ID:</label>
+				<input type="text" id="enfpolicy" name="enfpolicy">
+				
+				<label for="enfplan">Plan Name:</label>
+                		<input type="text" id="enfplan" name="enfplan">
+				
+				<label for="enfmember">Member ID:</label>
+				<input type="text" id="enfmember" name="enfmember">
+				
+				<label for="enfcarrierstatus">Carrier sees the plan status as:</label>
+				<input type="text" id="enfcarrierstatus" name="enfcarrierstatus">
+				
+				<label for="enfourstatus">Pennie sees the plan status as:</label>
+				<input type="text" id="enfourstatus" name="enfourstatus">
+				
+				<label for="enfoutcome">The desired outcome is:</label>
+				<textarea id="enfoutcome" name="enfoutcome"></textarea>
+				
+				<label for="enfdob">Customer's date of birth:</label>
+				<input type="text" id="enfdob" name="enfdob">
+				
+				<label for="enfaddress">Customer's address:</label>
+				<input type="text" id="enfaddress" name="enfaddress">
+				
+				<label for="enfssn">Last four digits of the customer's SSN:</label>
+				<input type="text" id="enfssn" name="enfssn">
+				
+				<label for="enftotalpremium">Enrollment premium amount:</label>
+				<input type="text" id="enftotalpremium" name="enftotalpremium">
+				
+				<label for="enfaptc">APTC:</label>
+				<input type="text" id="enfaptc" name="enfaptc">
+				
+				<label for="enfnet">Net Premium:</label>
+				<input type="text" id="enfnet" name="enfnet">
+
+                		<label for="enfdates">Effective Dates:</label>
+                		<input type="text" id="enfdates" name="enfdates">
+				
+				<label for="enfrep">A Carrier Representative was on the line:
+					<input type="checkbox" id="enfrep" name="enfrep" onClick="toggleEnfRep()">
+				</label>
+			
+				<div id="enfrephide" class="hidden">
+					<label for="enfrepname">Carrier Representative's Name:</label>
+					<input type="text" id="enfrepname" name="enfrepname">
+				</div>
+			</div>
+			
+			<div class="question-set" id="cnfQuestions">
+				<h4>Instructions:</h4>
+				<h5>Create when we show the customer's enrollment as cancelled and the carrier sees anything else.</h5>
+				
+				<label for="cnfcarrier">Carrier Name:</label>
+				<input type="text" id="cnfcarrier" name="cnfcarrier">
+				
+				<label for="cnfpolicy">Policy ID:</label>
+				<input type="text" id="cnfpolicy" name="cnfpolicy">
+				
+				<label for="cnfplan">Plan Name:</label>
+                <input type="text" id="cnfplan" name="cnfplan">
+				
+				<label for="cnfmember">Member ID:</label>
+				<input type="text" id="cnfmember" name="cnfmember">
+				
+				<label for="cnfcarrierstatus">Carrier sees the plan status as:</label>
+				<input type="text" id="cnfcarrierstatus" name="cnfcarrierstatus">
+				
+				<label for="cnfourstatus">Pennie sees the plan status as:</label>
+				<input type="text" id="cnfourstatus" name="cnfourstatus">
+				
+				<label for="cnfoutcome">The desired outcome is:</label>
+				<textarea id="cnfoutcome" name="cnfoutcome"></textarea>
+				
+				<label for="cnfdob">Customer's date of birth:</label>
+				<input type="text" id="cnfdob" name="cnfdob">
+				
+				<label for="cnfaddress">Customer's address:</label>
+				<input type="text" id="cnfaddress" name="cnfaddress">
+				
+				<label for="cnfssn">Last four digits of the customer's SSN:</label>
+				<input type="text" id="cnfssn" name="cnfssn">
+				
+				<label for="cnftotalpremium">Enrollment premium amount:</label>
+				<input type="text" id="cnftotalpremium" name="cnftotalpremium">
+				
+				<label for="cnfaptc">APTC:</label>
+				<input type="text" id="cnfaptc" name="cnfaptc">
+				
+				<label for="cnfnet">Net Premium:</label>
+				<input type="text" id="cnfnet" name="cnfnet">
+
+                <label for="cnfdates">Effective Dates:</label>
+                <input type="text" id="cnfdates" name="cnfdates">
+
+				<label for="cnfrep">A Carrier Representative was on the line:
+					<input type="checkbox" id="cnfrep" name="cnfrep" onClick="toggleCnfRep()">
+				</label>
+			
+				<div id="cnfrephide" class="hidden">
+					<label for="cnfrepname">Carrier Representative's Name:</label>
+					<input type="text" id="cnfrepname" name="cnfrepname">
+				</div>
+			</div>
+			
+			<div class="question-set" id="tnfQuestions">
+				<h4>Instructions:</h4>
+				<h5>Create when we show the customer's enrollment as terminated and the carrier shows anything else.</h5>
+				
+				<label for="tnfcarrier">Carrier Name:</label>
+				<input type="text" id="tnfcarrier" name="tnfcarrier">
+				
+				<label for="tnfpolicy">Policy ID:</label>
+				<input type="text" id="tnfpolicy" name="tnfpolicy">
+				
+				<label for="tnfplan">Plan Name:</label>
+                <input type="text" id="tnfplan" name="tnfplan">
+				
+				<label for="tnfmember">Member ID:</label>
+				<input type="text" id="tnfmember" name="tnfmember">
+				
+				<label for="tnfcarrierstatus">Carrier sees the plan status as:</label>
+				<input type="text" id="tnfcarrierstatus" name="tnfcarrierstatus">
+				
+				<label for="tnfourstatus">Pennie sees the plan status as:</label>
+				<input type="text" id="tnfourstatus" name="tnfourstatus">
+				
+				<label for="tnfoutcome">The desired outcome is:</label>
+				<textarea id="tnfoutcome" name="tnfoutcome"></textarea>
+				
+				<label for="tnfdob">Customer's date of birth:</label>
+				<input type="text" id="tnfdob" name="tnfdob">
+				
+				<label for="tnfaddress">Customer's address:</label>
+				<input type="text" id="tnfaddress" name="tnfaddress">
+				
+				<label for="tnfssn">Last four digits of the customer's SSN:</label>
+				<input type="text" id="tnfssn" name="tnfssn">
+				
+				<label for="tnftotalpremium">Enrollment premium amount:</label>
+				<input type="text" id="tnftotalpremium" name="tnftotalpremium">
+				
+				<label for="tnfaptc">APTC:</label>
+				<input type="text" id="tnfaptc" name="tnfaptc">
+				
+				<label for="tnfnet">Net Premium:</label>
+				<input type="text" id="tnfnet" name="tnfnet">
+
+                <label for="tnfdates">Effective Dates:</label>
+                <input type="text" id="tnfdates" name="tnfdates">
+
+				<label for="tnfrep">A Carrier Representative was on the line:
+					<input type="checkbox" id="tnfrep" name="tnfrep" onClick="toggleTnfRep()">
+				</label>
+			
+				<div id="tnfrephide" class="hidden">
+					<label for="tnfrepname">Carrier Representative's Name:</label>
+					<input type="text" id="tnfrepname" name="tnfrepname">
+				</div>
+			</div>
+			
+			<div class="question-set" id="snfQuestions">
+				<h4>Instructions:</h4>
+				<h5>Create after confirming the subsidies on the customer's enrollment and the carrier shows other or missing subsidies on their end. Keep in mind it takes 2-3 days for the carrier to see updates.</h5>
+				
+				<label for="snfcarrier">Carrier Name:</label>
+				<input type="text" id="snfcarrier" name="snfcarrier">
+				
+				<label for="snfplan">Plan Name:</label>
+				<input type="text" id="snfplan" name="snfplan">
+				
+				<label for="snfpolicy">Policy ID:</label>
+				<input type="text" id="snfpolicy" name="snfpolicy">
+				
+				<label for="snfmember">Member ID:</label>
+				<input type="text" id="snfmember" name="snfmember">
+				
+				<label for="snfoutcome">The desired outcome is:</label>
+				<textarea id="snfoutcome" name="snfoutcome"></textarea>
+				
+				<label for="snftotalpremium">Enrollment premium amount:</label>
+				<input type="text" id="snftotalpremium" name="snftotalpremium">
+				
+				<label for="snfaptc">APTC:</label>
+				<input type="text" id="snfaptc" name="snfaptc">
+				
+				<label for="snfcsr">CSR Amount:</label>
+				<input type="text" id="snfcsr" name="snfcsr">
+				
+				<label for="snfnet">Net Premium:</label>
+				<input type="text" id="snfnet" name="snfnet">
+				
+				<label for="snfdates">Effective Dates:</label>
+                <input type="text" id="snfdates" name="snfdates">
+				
+				<label for="snfdob">Customer's date of birth:</label>
+				<input type="text" id="snfdob" name="snfdob">
+				
+				<label for="snfaddress">Customer's address:</label>
+				<input type="text" id="snfaddress" name="snfaddress">
+				
+				<label for="snfssn">Last four digits of the customer's SSN:</label>
+				<input type="text" id="snfssn" name="snfssn">
+				
+			</div>
+			
+			<div class="question-set" id="billingQuestions">
+				<h4>Instructions:</h4>
+				<h5>Create after triaging to review all subsidies and plan details. We can't see billing so this should be used only with explicit permission.</h5>
+				
+				<label for="billingreason">Billing issue being requested (refund, confirmation of payment, etc.):</label>
+				<input type="text" id="billingreason" name="billingreason">
+				
+				<label for="billingcarrier">Carrier Name:</label>
+				<input type="text" id="billingcarrier" name="billingcarrier">
+				
+				<label for="billingplan">Plan Name:</label>
+				<input type="text" id="billingplan" name="billingplan">
+				
+				<label for="billingpayment">Payment Amount:</label>
+				<input type="text" id="billingpayment" name="billingpayment">
+				
+				<label for="billingpolicy">Policy ID:</label>
+				<input type="text" id="billingpolicy" name="billingpolicy">
+				
+				<label for="billingmember">Member ID:</label>
+				<input type="text" id="billingmember" name="billingmember">
+				
+				<label for="billingdob">Customer's Date of Birth:</label>
+				<input type="text" id="billingdob" name="billingdob">
+				
+				<label for="billingaddress">Customer's Full Address:</label>
+				<input type="text" id="billingaddress" name="billingaddress">
+				
+				<label for="billingssn">Last four digits of the customer's SSN:</label>
+				<input type="text" id="billingssn" name="billingssn">
+				
+				<label for="billingpremium">Enrollment Premium Amount</label>
+				<input type="text" id="billingpremium" name="billingpremium">
+				
+				<label for="billingaptc">APTC:</label>
+				<input type="text" id="billingaptc" name="billingaptc">
+				
+				<label for="billingnet">Net Premium:</label>
+				<input type="text" id="billingnet" name="billingnet">
+			</div>
+			
+			<div class="question-set" id="reinstatementQuestions">
+				<h4>Instructions:</h4>
+				<h5>Create only when the customer has been termed for nonpayment due to billing issues. Not for accounts that lost subsidies due to ROP and were subsequently termed for non-payment.</h5>
+				
+                <label for="reinstatecarrier">Carrier Name:</label>
+				<input type="text" id="reinstatecarrier" name="reinstatecarrier">
+				
+				<label for="reinstateplan">Plan Name:</label>
+                <input type="text" id="reinstateplan" name="reinstateplan">
+				
+				<label for="reinstatepolicy">Policy ID:</label>
+				<input type="text" id="reinstatepolicy" name="reinstatepolicy">
+
+                <label for="reinstatereason">Plan was ended due to:</label>
+                <textarea id="reinstatereason" name="reinstatereason"></textarea>
+				
+				<label for="reinstatedob">Date of Birth:</label>
+				<input type="text" id="reinstatedob" name="reinstatedob">
+				
+				<label for="reinstateaddress">Full Address:</label>
+				<input type="text" id="reinstateaddress" name="reinstateaddress">
+				
+				<label for="reinstatessn">Last four digits of the customer's SSN:</label>
+				<input type="text" id="reinstatessn" name="reinstatessn">
+				
+				<label for="reinstatepremium">Enrollment Premium Amount</label>
+				<input type="text" id="reinstatepremium" name="reinstatepremium">
+				
+				<label for="reinstateaptc">APTC:</label>
+				<input type="text" id="reinstateaptc" name="reinstateaptc">
+				
+				<label for="reinstatenet">Net Premium:</label>
+				<input type="text" id="reinstatenet" name="reinstatenet">
+
+				<label for="reinstaterep">A Carrier Representative was on the line:
+					<input type="checkbox" id="reinstaterep" name="reinstaterep" onClick="toggleReinstateRep()">
+				</label>
+			
+				<div id="reinstaterephide" class="hidden">
+					<label for="reinstaterepname">Carrier Representative's Name:</label>
+					<input type="text" id="reinstaterepname" name="reinstaterepname">
+				</div>
+            </div>
+			
+			<div class="question-set" id="enstatusQuestions">
+				<h4>Instructions:</h4>
+				<h5>Only create in situations where the carrier has no record of enrollment. Should not be made if the policy hasn't started, binder payment not made, and/or there are no issues reported by the carrier.</h5>
+				
+				<label for="enstatuscarrier">Carrier Name:</label>
+				<input type="text" id="enstatuscarrier" name="enstatuscarrier">
+				
+				<label for="enstatusplan">Plan Name</label>
+				<input type="text" id="enstatusplan" name="enstatusplan">
+				
+				<label for="enstatuspolicy">Policy ID:</label>
+				<input type="text" id="enstatuspolicy" name="enstatuspolicy">
+				
+				<label for="enstatusdob">Date of Birth:</label>
+				<input type="text" id="enstatusdob" name="enstatusdob">
+				
+				<label for="enstatusaddress">Full Address:</label>
+				<input type="text" id="enstatusaddress" name="enstatusaddress">
+				
+				<label for="enstatusssn">Last four digits of the customer's SSN:</label>
+				<input type="text" id="enstatusssn" name="enstatusssn">
+				
+				<label for="enstatuspremium">Enrollment Premium Amount</label>
+				<input type="text" id="enstatuspremium" name="enstatuspremium">
+				
+				<label for="enstatusaptc">APTC:</label>
+				<input type="text" id="enstatusaptc" name="enstatusaptc">
+				
+				<label for="enstatusnet">Net Premium:</label>
+				<input type="text" id="enstatusnet" name="enstatusnet">
+			</div>
+			
+			<div class="question-set" id="correctionQuestions">
+				<h4>Instructions:</h4>
+				<h5>Create after triaging the customer's information is accurate in the application and enrollments, however the carrier shows other information.</h5>
+				
+				<label for="correctioncarrier">Carrier Name</label>
+				<input type="text" id="correctioncarrier" name="correctioncarrier">
+				
+				<label for="correctiontopic">Information type that needs to be corrected:</label>
+				<select id="correctiontopic">
+					<option value="OPTION NOT SELECTED">Select Option</option>
+					<option value="Name">Name</option>
+					<option value="DOB">Date of Birth</option>
+					<option value="Gender">Gender</option>
+					<option value="Address">Address</option>
+				</select>
+				
+				<label for="correctionold">Information the carrier currently has:</label>
+				<input type="text" id="correctionold" name="correctionold">
+				
+				<label for="correctionupdate">Correct information:</label>
+				<input type="text" id="correctionupdate" name="correctionupdate">
+				
+				<label for="correctionpolicy">Policy ID:</label>
+				<input type="text" id="correctionpolicy" name="correctionpolicy">
+			</div>
+			
+			<div class="question-set" id="retroQuestions">
+				<h4>Instructions:</h4>
+				<h5>Only create for those needing a termination date on the last day of the previous month due to gain of other coverage. If the customer needs any other date or has another reason is anything other than other coverage -For dental policies we still create the ticket for tracking, but should be solved by TL/Sup while on the call.</h5>
+				
+				<label for="retrosub">Member(s) in need of retroactive termination:</label>
+				<input type="text" id="retrosub" name="retrosub">
+
+				<label for="retrocarrier">Carrier Name:</label>
+				<input type="text" id="retrocarrier" name="retrocarrier">
+				
+				<label for="retropolicy">Policy ID:</label>
+				<input type="text" id="retropolicy" name="retropolicy">
+				
+				<label for="retrodob">Date of Birth:</label>
+				<input type="text" id="retrodob" name="retrodob">
+				
+				<label for="retrostart">Coverage start date:</label>
+				<input type="text" id="retrostart" name="retrostart">
+				
+				<label for="retroterm">Requested termination date:</label>
+				<input type="text" id="retroterm" name="retroterm">
+			</div>
+			
+			<div class="question-set" id="cancellationQuestions">
+				<h4>Instructions:</h4>
+				<h5>Create when a customer is requesting a cancellation of full coverage. Not to be used for the 10-Day Free Lookup policy as those are done on the floor by request. </h5>
+				
+				<label for="cancelcarrier">Carrier Name:</label>
+				<input type="text" id="cancelcarrier" name="cancelcarrier">
+				
+				<label for="cancelplan">Plan Name:</label>
+				<input type="text" id="cancelplan" name="cancelplan">
+				
+				<label for="cancelpolicy">Policy ID:</label>
+				<input type="text" id="cancelpolicy" name="cancelpolicy">
+				
+				<label for="cancelreason">Reason for cancellation:</label>
+				<textarea id="cancelreason" name="cancelreason"></textarea>
+			</div>
+			
+			<div class="question-set" id="backdateQuestions">
+				<h4>Instructions:</h4>
+				<h5>Use for Term 01 (Cx with Medicare that started before 1/1 of the current policy year. OR with any requests that don't fit the Term 03 request for Medicaid customers within 60 days.)</h5>
+				
+				<label for="backdatecarrier">Carrier Name</label>
+				<input type="text" id="backdatecarrier" name="backdatecarrier">
+				
+				<label for="backdateplan">Plan Name:</label>
+				<input type="text" id="backdateplan" name="backdateplan">
+				
+				<label for="backdatepolicy">Policy ID:</label>
+				<input type="text" id="backdatepolicy" name="backdatepolicy">
+				
+				<label for="backdatedate">Termination date being requested:</label>
+				<input type="text" id="backdatedate" name="backdatedate">
+				
+				<label for="backdatereason">Reason for termination:</label>
+				<input type="text" id="backdatereason" name="backdatereason">
+
+				<label for="backdateother">The consumer has other coverage:
+					<input type="checkbox" id="backdateother" name="backdateother" onClick="toggleBackdateOther()">
+				</label>
+			
+				<div id="backdatehide" class="hidden">
+					<label for="backdatestart">Start date of other coverage:</label>
+					<input type="text" id="backdatestart" name="backdatestart">
+				</div>
+			</div>
+			
+			<div class="question-set" id="aptcQuestions">
+				<h4>Instructions:</h4>
+				<h5>Only create for those eligible for APTC adjustments. Note: All TL/Sups are able to adjust subsidies on the floor.</h5>
+				
+				<label for="aptccarrier">Carrier Name:</label>
+				<input type="text" id="aptccarrier" name="aptccarrier">
+				
+				<label for="aptcplan">Plan Name:</label>
+				<input type="text" id="aptcplan" name="aptcplan">
+				
+				<label for="aptcpolicy">Policy ID:</label>
+				<input type="text" id="aptcpolicy" name="aptcpolicy">
+				
+				<label for="aptcamount">APTC amount that needs to be applied:</label>
+				<input type="text" id="aptcamount" name="aptcamount">
+				
+				<label for="aptcwhy">Why does the APTC needs to be applied/ was not applied:</label>
+				<textarea id="aptcwhy" name="aptcwhy"></textarea>
+				
+				<label for="aptcapp">Application Case Number:</label>
+				<input type="text" id="aptcapp" name="aptcapp">
+			</div>
+			
+			<div class="question-set" id="retromedQuestions">
+				<h4>Instructions:</h4>
+				<h5>Use for Term 03 (Customer's who gained Medicaid after being assessed in our system, however choose or remained in full price coverage during the assessment period.)</h5>
+				
+				<label for="retromedpolicy">Policy ID:</label>
+				<input type="text" id="retromedpolicy" name="retromedpolicy">
+				
+				<label for="retromedterm">Requested termination date:</label>
+				<input type="text" id="retromedterm" name="retromedterm">
+				
+				<label for="retromedgain">Start date of Medicaid coverage:</label>
+				<input type="text" id="retromedgain" name="retromedgain">
+				
+				<label for="retromedmembers">Member(s) gaining Mediciad coverage:</label>
+				<input type="text" id="retromedmembers" name="retromedmembers">
+				
+				<label for="retromedpa">Is the customer enrolled in coverage through Pennie? (Y/N)</label>
+				<input type="text" id="retromedpa" name="retromedpa">
+				
+				<label for="retromedstarted">Enrolled in Medicaid or CHIP with retroactive start date? (Y/N)</label>
+				<input type="text" id="retromedstarted" name="retromedstarted">
+				
+				<label for="retromeddoc">Advised consumer to provide documentation showing the following? (Y/N)</label>
+				<input type="text" id="retromeddoc" name="retromeddoc">
+				
+				<h5>A. Which famiy Members are enrolled in Medicaid or CHIP.<br>
+					B. Date the Medicaid or CHIP began.<br>
+					C. Date the notice was generated and/or mailed to the customer.<br>Issue reported within 60 days of receipt of eligibility notice
+					from Mediciad or CHIP.</h5>
+			</div>
+			
+			<div class="question-set" id="switchQuestions">
+				<h4>Instructions:</h4>
+				<h5>Complete if the primary is incorrectly listed on the application.</h5>
+				
+				<label for="switchcx">First and Last name of the customer who is listed incorrectly:</label>
+				<input type="text" id="switchcx" name="switchcx">
+				
+				<label for="switchwrong">What they are incorrectly listed as:</label>
+				<input type="text" id="switchwrong" name="switchwrong">
+				
+				<label for="switchcarrier">Carrier Name:</label>
+				<input type="text" id="switchcarrier" name="switchcarrier">
+				
+				<label for="switchplan">Plan Name:</label>
+				<input type="text" id="switchplan" name="switchplan">
+				
+				<label for="switchpolicy">Policy ID:</label>
+				<input type="text" id="switchpolicy" name="switchpolicy">
+				
+				<label for="switchdob">Date of Birth:</label>
+				<input type="text" id="switchdob" name="switchdob">
+				
+				<label for="switchaddress">Full Address:</label>
+				<input type="text" id="switchaddress" name="switchaddress">
+				
+				<label for="switchssn">Last four digits of the customer's SSN:</label>
+				<input type="text" id="switchssn" name="switchssn">
+				
+				<label for="switchtype">Areas Affected:<select id="switchtype">
+					<option value="OPTION NOT SELECTED">Select Option</option>
+					<option value="Triage">Both the application and enrollment are incorrect</option>
+					<option value="Technical">The application is correct but the enrollment is incorrect</option>
+				</select></label>
+			</div>
+			
+			<div class="question-set" id="verificationQuestions">
+				<h4>Instructions:</h4>
+				<h5>Only use when you've confirmed all dashboards for documentation request. Customer should still be receiving notifications to submit documents while everything shows verified.</h5>
+				
+				<label for="verificationsteps">Troubleshooting that was attempted:</label>
+				<textarea id="verificationsteps" name="verificationsteps"></textarea>
+			</div>
+			
+			<div class="question-set" id="brokerQuestions">
+				<h4>Instructions:</h4>
+				<h5>Please confirm all Broker templates located in Pennie Procedures. Confirm you have followed all steps in the Broker Guide on unlocking accounts.</h5>
+				
+				<label for="brokername">Broker's First &amp; Last Name:</label>
+				<input type="text" id="brokername" name="brokername">
+				
+				<label for="brokeremail">Broker's Login Email Address:</label>
+				<input type="text" id="brokeremail" name="brokeremail">
+
+				<label for="brokernum">Broker's Best Callback Number:</label>
+				<input type="text" id="brokernum" name="brokernum">
+			</div>
+			
+			<div class="question-set" id="assisterQuestions">
+				<h4>Instructions:</h4>
+				<h5>Please confirm all Assister templates located in Pennie Procedures. Confirm you have followed all steps in the Assister Guide.</h5>
+				
+				<label for="assistername">Assister's First &amp; Last Name:</label>
+				<input type="text" id="assistername" name="assistername">
+				
+				<label for="assisteremail">Assister's Login Email Address:</label>
+				<input type="text" id="assisteremail" name="assisteremail">
+
+				<label for="assisternum">Assister's Best Callback Number:</label>
+				<input type="text" id="assisternum" name="assisternum">
+			</div>
+			
+			<div class="question-set" id="taxQuestions">
+				<h4>Instructions:</h4>
+				<h5>Only create if an adjustment needs made. Customer's may not be reading the 1095-A correctly, we should triage if an issues exists. Be detailed regarding what correction needs to be made.</h5>
+				
+				<label for="taxpolicy">Policy ID:</label>
+				<input type="text" id="taxpolicy" name="taxpolicy">
+				
+				<label for="taxinfo">Information that needs to be corrected:</label>
+				<input type="text" id="taxinfo" name="taxinfo">
+				
+				<label for="taxreview">Issue has been reviewed by which TL or Supervisor:</label>
+				<input type="text" id="taxreview" name="taxreview">
+			</div>
+			
+			<div class="question-set" id="overQuestions">
+				<h4>Instructions:</h4>
+				<h5>Please remember to review the ITF to see if ticket is necessary. </h5>
+				
+				<label for="overpolicy">Policy ID:</label>
+				<input type="text" id="overpolicy" name="overpolicy">
+				
+				<label for="overdependant">Dependant First and Last Name:</label>
+				<input type="text" id="overdependant" name="overdependant">
+			</div>
+			
+			<div class="question-set" id="errorQuestions">
+				<h4>Instructions:</h4>
+				<h5>Only use when you've tried all known workarounds and steps in CAP Guide. Refer to your team chat to establish if a screenshot of the issue should be included in the ticket.</h5>
+				
+				<label for="errormessage">Error message the customer is receiving:</label>
+				<textarea id="errormessage" name="errormessage"></textarea>
+				
+				<label for="errorsteps">List the steps to get to the error message:</label>
+				<textarea id="errorsteps" name="errorsteps"></textarea>
+
+				<label for="errorss">A screenshot of the issue will be attached to the ticket: 
+					<input type="checkbox" id="errorss" name="errorss" onclick="toggleErrorSs()"></label>
+			</div>
+			
+			<div class="question-set" id="ropQuestions">
+				<h4>Instructions:</h4>
+				<h5>Created for those requesting ROP Reinstatements. Should only be done for Income ROPs as directed by your TL/Sup. Tickets are worked while customer remains on the line and resolved out during the call by TL/Sup.</h5>
+				
+				<label for="rop1stname">Customer's First Name:</label>
+				<input type="text" id="rop1stname" name="rop1stname">
+
+				<label for="roplastname">Customer's Last Name:</label>
+				<input type="text" id="roplastname" name="roplastname">
+				
+				<label for="ropaptc">APTC Amount: </label>
+				<input type="text" id="ropaptc" name="ropaptc">
+				
+				<label for="ropplan">Plan Name:</label>
+				<input type="text" id="ropplan" name="ropplan">
+				
+				<label for="roppolicy">Policy ID:</label>
+				<input type="text" id="roppolicy" name="roppolicy">
+				
+				<label for="ropexpiration">Date of ROP Expiration:</label>
+				<input type="text" id="ropexpiration" name="ropexpiration">
+				
+				<label for="ropdate">Today's Date:</label>
+				<input type="text" id="ropdate" name="ropdate">
+			</div>
+			
+			<div class="question-set" id="posappealQuestions">
+				<h4>Instructions:</h4>
+				<h5>Only create with TL/SUP permission.</h5>
+				
+				<label for="posappealreason">Detailed Reason Appeal is Being Requested:</label>
+				<textarea id="posappealreason" name="posappealreason"></textarea>
+				
+				<label for="posappealfirst">Proposed solution by first CSR:</label>
+				<textarea id="posappealfirst" name="posappealfirst"></textarea>
+				
+				<label for="posappealoutcome">Customer's Desired Outcome:</label>
+				<textarea id="posappealoutcome" name="posappealoutcome"></textarea>
+
+				<label for="posescalate">The call was escalated:
+						<input type="checkbox" id="posescalate" name="posescalate" onClick="togglePosEscalate()">
+				</label>
+				
+				<div id="posescalatehide">
+					<label for="posnames">Names of Pennie CSR's involved with escalation:</label>
+					<input type="text" id="posnames" name="posnames">
+				</div>
+
+				<label for="posappealres">Resolution you propose:</label>
+				<textarea id="posappealres" name="posappealres"></textarea>
+				
+				<label for="posappealscaller">Caller Name &amp; Relationship:</label>
+				<input type="text" id="posappealscaller" name="posappealscaller">
+				
+				<label for="posappealscallback">Callback Number:</label>
+				<input type="text" id="posappealscallback" name="posappealscallback">
+
+				<label for="posappealhours">Business hours / Available hours for callback:</label>
+				<input type="text" id="posappealhours" name="posappealhours">
+			</div>
+			
+			<div class="question-set" id="nonappealQuestions">
+				<h4>Instructions:</h4>
+				<h5>Only create with TL/SUP permission.</h5>
+				
+				<label for="nonappealreason">Detailed Reason Appeal is Being Requested:</label>
+				<textarea id="nonappealreason" name="nonappealreason"></textarea>
+				
+				<label for="nonappealfirst">Proposed solution by first CSR:</label>
+				<textarea id="nonappealfirst" name="nonappealfirst"></textarea>
+				
+				<label for="nonappealoutcome">Customer's Desired Outcome:</label>
+				<textarea id="nonappealoutcome" name="nonappealoutcome"></textarea>
+				
+				<label for="nonescalate">The call was escalated:
+					<input type="checkbox" id="nonescalate" name="nonescalate" onClick="toggleNonEscalate()">
+				</label>
+				
+				<div id="nonescalatehide">
+					<label for="nonnames">Names of Pennie CSR's involved with escalation:</label>
+					<input type="text" id="nonnames" name="nonnames">
+				</div>
+				
+				<label for="nonappealres">Resolution you propose:</label>
+				<textarea id="nonappealres" name="nonappealres"></textarea>
+				
+				<label for="nonappealscaller">Caller Name &amp; Relationship:</label>
+				<input type="text" id="nonappealscaller" name="nonappealscaller">
+				
+				<label for="nonappealscallback">Callback Number:</label>
+				<input type="text" id="nonappealscallback" name="nonappealscallback">
+
+				<label for="nonappealhours">Business hours / Available hours for callback:</label>
+				<input type="text" id="nonappealhours" name="nonappealhours">
+			</div>
+			
+			<div class="question-set" id="textQuestions">
+				<h4>Instructions:</h4>
+				<h5>Only create for those customer apart of the text campaign that are upset about receiving the text alerts. Customer's should be advised to respond "STOP" to avoid additional texts. For Tracking Purposes.</h5>
+				
+				<label for="textreceived">Customer has received confirmation text:
+						<input type="checkbox" id="textreceived" name="textreceived" onClick="toggleText()">
+				</label>
+				
+				<label for="textable">Customer is able to reply STOP:
+						<input type="checkbox" id="textable" name="textable" onClick="toggleTextAble()">
+				</label>
+				
+				<label for="textjira">A JIRA was created:
+						<input type="checkbox" id="textjira" name="textjira" onClick="toggleTextJira()">
+				</label>
+				
+				<div id="textjirahide">
+					<label for="textjiranum">JIRA Ticket Number:</label>
+					<input type="text" id="textjiranum" name="textjiranum">
+				</div>
+			</div>
+			
+			<div class="question-set" id="maissueQuestions">
+				<h4>Instructions:</h4>
+				<h5>Use for customer apart of the PHE or Medicaid unwinding, that are having issues with account access. Be sure to review all workaround steps prior to ticket creation. Ensure the MA Hashtag is included in the internal ticket comments.</h5>
+				
+				<label for="maissuecode">Error message encountered:</label>
+				<textarea id="maissuecode" name="maissuecode"></textarea>
+				
+				<label for="maissuesteps">Error code received after:</label>
+				<select id="maissuesteps">
+					<option value="OPTION NOT SELECTED">Select Option</option>
+					<option value="inputting their access code">Inputting Access Code</option>
+					<option value="entering their PII">Entering PII</option>
+				</select>
+			</div>
+			
+			<div class="question-set" id="removeQuestions">
+				<h4>Instructions:</h4>
+				<h5>Be sure to review the Cease Communication Guidance before creating a ticket. No all request are able to be granted in the manner of which the customer is asking.</h5>
+				
+				<label for="removereason">Reason the customer is requesting removal:</label>
+				<textarea id="removereason" name="removereason"></textarea>
+			</div>
+
+			<div class="question-set" id="unsubQuestions">
+				<h4>Instructions:</h4>
+				<h5>Be sure to review the Cease Communication Guidance before creating a ticket. No all request are able to be granted in the manner of which the customer is asking.</h5>
+
+				<label for="unsubemail">Email address the customer is requesting to be unsubscribed:</label>
+				<input type="text" id="unsubemail" name="unsubemail">
+			</div>
+
+			<div class="question-set" id="faxunassignedQuestions">
+				<h4>Instructions:</h4>
+				<h5>Only for the Fax Team. For use if a customer called in stating they have faxed in a requested document and the referenced document is not populating on the customer's account.</h5>
+			</div>
+
+			<div class="question-set" id="faxreturnedQuestions">
+				<h4>Instructions:</h4>
+				<h5>Only for the Fax Team. For use if a return notice is received.</h5>
+
+				<label for="returneddate">Date returned notice was received:</label>
+				<input type="text" id="returneddate" name="returneddate">
+
+				<label for="outreachdate">Date outreach was made to the customer:</label>
+				<input type="text" id="outreachdate" name="outreachdate">
+			</div>
+
+			<div class="question-set" id="highcallQuestions">
+				<h4>Instructions:</h4>
+				<h5>Used when the Call Center enter High Call Volume Protocals. This will be relayed by your management team.</h5>
+
+				<label for="highcallreason">Detailed explanation of the reason for the call:</label>
+				<textarea id="highcallreason" name="highcallreason"></textarea>
+
+				<label for="highcallnumber">Callback number:</label>
+				<input type="text" id="highcallnumber" name="highcallnumber">
+			</div>
+
+			<div class="question-set" id="overflowQuestions">
+				<h4>Instructions:</h4>
+				<h5>Used if a customer qualifies, based on the Exceptional Circumstances SEP, for a 1/1 effective date.<br><br>Just click Generate Ticket to build the ticket, unless you have additional notes to add. </h5>
+			</div>
+
+			<div class="question-set" id="revfiledQuestions">
+				<h4>Instructions:</h4>
+				<h5>Used for Tracking Purposes and the customer has already been approved for the SEP. Confirmed the form was submitted or they amended their taxes.</h5>
+			</div>
+
+			<div class="question-set" id="revvendorQuestions">
+				<h4>Instructions:</h4>
+				<h5>Used for Tracking Purposes. Automated Rejection. Customer had the form available for use and they don't want to amend.</h5>
+
+				<label for="revvendortax">Tax software the customer used while filing their taxes:</label>
+				<input type="text" id="revvendortax" name="revvendortax">
+
+				<label for="revvendorissue">Reason the REV-1882 was not submitted:</label>
+				<select id="revvendorissue">
+					<option value="OPTION NOT SELECTED">Select Option</option>
+					<option value="did not file the REV-1882">Did not file the REV-1882</option>
+					<option value="the REV-1882 was unavailable to them">The REV-1882 was unavailable to them</option>
+					<option value="did not file the REV-1882 because the form was unavailable to them">Both options</option>
+				</select>
+			</div>
+
+			<div class="question-set" id="revdorQuestions">
+				<h4>Instructions:</h4>
+				<h5>Used for those where the form was NOT available or paper application. Will need to be confirmed by the DOR (Department of Revenue)</h5>
+
+				<label for="revdortax">Tax software the customer used while filing their taxes:</label>
+				<input type="text" id="revdortax" name="revdortax">
+
+				<label for="revdorissue">Reason the REV-1882 was not submitted:</label>
+				<select id="revdorissue">
+					<option value="OPTION NOT SELECTED">Select Option</option>
+					<option value="did not file the REV-1882">Did not file the REV-1882</option>
+					<option value="the REV-1882 was unavailable to them">The REV-1882 was unavailable to them</option>
+					<option value="did not file the REV-1882 because the form was unavailable to them">Both options</option>
+				</select>
+			</div>
+
+			<div class="container">
+				<div class="name" id="nameSection">
+					<label for="firstLast">Primary's First &amp; Last Name:</label>
+					<input type="text" id="firstLast" name="firstLast">
+				</div>
+				
+				<div class="hhid" id="hhidSection">
+					<label for="hhidField">HHID:</label>
+					<input type="text" id="hhidField" name="hhidField">
+				</div>
+			</div>
+
+			<div class="notes" id="notesSection">
+				<label for="addnotes">Do you have additional notes?
+					<input type="checkbox" id="addnotes" name="addnotes" onClick="toggleAddNotes()">
+				</label>
+			
+				<div id="noteshide" class="hidden">
+					<label for="notesField">Additional Notes:</label>
+					<textarea id="notesField" name="notesField"></textarea>
+				</div>
+			</div>
+
+			<div class="formButtons">
+				<button id="generate-output-button" type="button" onclick="generateOutput(); scrollWin(0, 3000)">Generate Ticket</button>
+				<button id="clear-button" type="button" onclick="clearForm()">Reset Form</button>
+			</div>
+		</div>
+	</form>
+	
+	<div id="output-panel">
+		<h3>Generated Ticket</h3>
+		<div id="subject"></div>
+			<button id="copy-subject-button" onclick="copySubject()">Copy Subject</button>
+		<div class="ticDetails">
+			<div class="grid-item">
+				<span>Ticket Type:</span>
+				<h5 id="ticType"></h5>
+			</div>
+			<div class="grid-item">
+				<span>Ticket Subtype:</span>
+				<h5 id="ticSub"></h5>
+			</div>
+			<div class="grid-item">
+				<span>Priority:</span>
+				<h5 id="ticPriority"></h5>
+			</div>
+		</div>
+		<div id="output"></div>
+			<button id="copy-output-button" onclick="copyOutput()">Copy Ticket</button>
+		<h6>After copying, paste the Ticket into "Ticket Description" with CTRL + V or Right Click</h6>
+	</div>
+	
+</main>
+
+<script src="js/script.js"></script>
+	
+</body>
+</html>
