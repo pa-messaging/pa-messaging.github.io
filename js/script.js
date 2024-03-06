@@ -26,6 +26,10 @@ function generateOutput() {
     var questionSet = document.getElementById(selectedOption + 'Questions');
     
     var firstLast = document.getElementById('firstLast').value;
+
+    var incomedoc = document.getElementById('incomedoc').value;
+    var incomeamount = document.getElementById('incomeamount').value;
+    var incomeapp = document.getElementById('incomeapp').value;
     
     var hhidField = document.getElementById('hhidField').value;
     var rop1stname = document.getElementById('rop1stname').value;
@@ -42,7 +46,7 @@ function generateOutput() {
         switch (selectedOption) {  
             
             case 'income':      
-                outputText += "Testing";
+                outputText += "Hello " + firstLast + ",<br><br>" + "We were unable to verify this document for Income Verification.<br>Here's what you submitted " + incomedoc + " with a reported income of $" + incomeamount + ". However, we need verification of the $" + incomeapp + " reported in your application in order to process your request. You can now attest to your income using the updated Pennie Self-Attestation Letter, available on Pennie.com/Resources: " + "https://agency.pennie.com/wp-content/uploads/2023/06/Pennie-Income-Attestation-From-Updated-06-23.pdf" + " Note that if you're verifying Self-Employment income, your document should display the Net Income; all non self-employment income should match your Adjusted Gross Income. You will have 90 days from the day you received your eligibility notice to get the proper documentation submitted. We understand that these processes can sometimes be confusing and frustrating, but we are here to help you navigate the process at 844-844-8040, with any additional questions. You can also check out our site for a list of acceptable documents at" + "https://help.pennie.com/hc/en-us/articles/360051084873-Documents-to-confirm-your-household-income" + "<br><br>" + "Thank you for choosing Pennie.<br><br>" + "Regards,<br>Pennie Customer Service";
             break;
 
             case 'citizenship':      
