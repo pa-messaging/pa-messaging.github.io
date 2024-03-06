@@ -14,13 +14,10 @@ function showQuestions() {
 
     if (selectedOption === 'broker' || selectedOption === 'assister' || selectedOption === 'overflow') {
         nameSection.style.display = 'none';
-        hhidSection.style.display = 'none';
     } else if (selectedOption === 'rop') {
         nameSection.style.display = 'none';
-        hhidSection.style.display = 'flex';
     } else {
         nameSection.style.display = selectedOption !== 'placeholder' ? 'flex' : 'none';
-        hhidSection.style.display = selectedOption !== 'placeholder' ? 'flex' : 'none';
     }
 }
 
@@ -29,8 +26,8 @@ function generateOutput() {
     var questionSet = document.getElementById(selectedOption + 'Questions');
     
     var firstLast = document.getElementById('firstLast').value;
-    var hhidField = document.getElementById('hhidField').value;
     
+    var hhidField = document.getElementById('hhidField').value;
     var rop1stname = document.getElementById('rop1stname').value;
     var roplastname = document.getElementById('roplastname').value;
     var ropaptc = document.getElementById('ropaptc').value;
@@ -97,10 +94,6 @@ function generateOutput() {
             break;
 
             case 'rop':      
-                outputText += "Testing";
-            break;
-
-            case 'rop':      
                 outputText += rop1stname + " " + roplastname + " (ID:" + hhidField + ") called in requesting reinstatement of the APTC amount of $" + ropaptc + " on the plan " + ropplan + " with Policy ID#" + roppolicy + " due to the expiration of ROP on " + ropexpiration + "<br><br>" + "#Verbal_Attestation_Completed_By_" + rop1stname + "_" + roplastname + "_For_" + ropaptc + "_On_" + ropdate;
             break;
 
@@ -136,9 +129,6 @@ function clearForm() {
     document.getElementById('firstLast').value = '';
     document.getElementById('nameSection').style.display = 'none';
     
-    document.getElementById('hhidField').value = '';
-    document.getElementById('hhidSection').style.display = 'none';
-
     document.getElementById('type').selectedIndex = 0;
 
     var questionSets = document.querySelectorAll('.question-set');
