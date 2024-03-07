@@ -17,11 +17,11 @@
 				<label for="type" >Type of Message:</label>
 				<select id="type" name="type" onchange="showQuestions()">
 					<option value="placeholder">Select Message Type</option>
+                    <option value="internal">Internal Rejection / Approval Comment</option>
                     <option value="income">Income Document Rejection</option>
                     <option value="citizenship">Citizenship Document Rejection</option>
                     <option value="lawful">Lawful Presence Document Rejection</option>
                     <option value="incarceration">Incarceration Document Rejection</option>
-                    <option value="internal">Internal Rejectiong / Approval Comment</option>
                     <option value="ssn">Social Security Number Document Rejection</option>
                     <option value="death">Death Document Rejection</option>
                     <option value="aiv">AIV Rejection</option>
@@ -72,6 +72,16 @@
             </div>
 
             <div class="question-set" id="internalQuestions">
+                <label for="internalselection">DMI Accepted or Rejected:&nbsp;
+                    <select id="internalselection" name="internalselection">
+                        <option value="OUTCOME NOT SELECTED">Select Outcome</option>
+                        <option value="#DMI_Accepted">Accepted</option>
+                        <option value="#DMI_Rejected">Rejected</option>
+                    </select>
+                </label>
+
+                <label for="internalreason">Reason the DMI was Accepted / Rejected:</label>
+                <textarea id="internalreason" name="internalreason"></textarea>
             </div>
 
             <div class="question-set" id="ssnQuestions">
