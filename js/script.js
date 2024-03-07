@@ -49,6 +49,11 @@ function generateOutput() {
     var aivdoc = document.getElementById('aivdoc').value;
     var aivreq = document.getElementById('aivreq').value;
 
+    var overdoc = document.getElementById('overdoc').value;
+    var overamount = document.getElementById('overamount').value;
+    var overapplicant = document.getElementById('overapplicant').value;
+    var overapp = document.getElementById('overapp').value;
+
     var residencydoc = document.getElementById('residencydoc').value;
     var residencyreq = document.getElementById('residencyreq').value;
 
@@ -113,7 +118,7 @@ function generateOutput() {
             break;
 
             case 'over':      
-                outputText += "Testing";
+                outputText += "Hello " + firstLast + ",<br><br>" + "We were unable to verify this document for Income Verification.<br>Here's what you submitted: " + overdoc + " showing $" + overamount + " for " + overapplicant + ". However, we need verification of the $" + overapp + " reported in the application for " + overapplicant + " in order to process your request. Note that if you're verifying Self-Employment income, your document should display the Net Income; all non self-employment income should match your Adjusted Gross Income.<br>You will have 90 days from the day you received your eligibility notice to get the proper documentation submitted. We understand that these processes can sometimes be confusing and frustrating, but we are here to help you navigate the process at 844-844-8040, with any additional questions.<br>You can also check out our site for a list of acceptable documents at<br>" + "https://help.pennie.com/hc/en-us/articles/360051084873-Documents-to-confirm-your-household-income" + "Thank you for choosing Pennie.<br><br>" + "Regards,<br>Pennie Customer Service";
             break;
 
             case 'residency':      
