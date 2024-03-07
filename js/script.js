@@ -49,6 +49,11 @@ function generateOutput() {
     var aivdoc = document.getElementById('aivdoc').value;
     var aivreq = document.getElementById('aivreq').value;
 
+    var reviewtype = document.getElementById('reviewtype').value;
+    var reviewdoc = document.getElementById('reviewdoc').value;
+    var reviewapplicant = document.getElementById('reviewapplicant').value;
+    var reviewapp = document.getElementById('reviewapp').value;
+
     var overdoc = document.getElementById('overdoc').value;
     var overamount = document.getElementById('overamount').value;
     var overapplicant = document.getElementById('overapplicant').value;
@@ -102,11 +107,11 @@ function generateOutput() {
             break;
 
             case 'aiv':      
-                outputText += "Hello " + firstLast + ",<br><br>" + "We were unable to verify this document for Income Verification.<br>Here's what you submitted: " + aivdoc + ". However, we need " + aivreq + " in order to process your request. You will have 30 days from the day you received your eligibility notice to get the proper documentation submitted. We understand that these processes can sometimes be confusing and frustrating, but we are here to help you navigate the process at 844-844-8040, with any additional questions. You can also check out our site for a list of acceptable documents at<br>" + "https://help.pennie.com/hc/en-us/articles/360051084873-Documents-to-confirm-your-household-income" + "<br><br>" + "Thank you for choosing Pennie.<br><br>" + "Regards,<br>Pennie Customer Service";
+                outputText += "Hello " + firstLast + ",<br><br>" + "We were unable to verify this document for Income Verification.<br>Here's what you submitted: " + aivdoc + ". However, we need " + aivreq + " in order to process your request. You will have 30 days from the day you received your eligibility notice to get the proper documentation submitted. We understand that these processes can sometimes be confusing and frustrating, but we are here to help you navigate the process at 844-844-8040, with any additional questions. You can also check out our site for a list of acceptable documents at<br>" + "https://help.pennie.com/hc/en-us/articles/360051084873-Documents-to-confirm-your-household-income" + "<br><br><br>" + "Thank you for choosing Pennie.<br><br>" + "Regards,<br>Pennie Customer Service";
             break;
 
             case 'review':      
-                outputText += "Testing";
+                outputText += "Hello " + firstLast + ",<br><br><br>" + "We were able to re-review and approve your submitted document(s) for " + reviewtype + " verification. The " + reviewdoc + " for " + reviewapplicant + " has been successfully matched to their " + reviewapp + " in the application.  Please disregard previous message requesting additional document(s) to be submitted. " + reviewtype + " for " + reviewapplicant + " is now verified. For additional information or assistance, please contact us at 844-844-8040. Thank you for choosing Pennie.<br><br><br>" + "Regards,<br><br>Pennie Customer Service";
             break;
 
             case 'nonpennie':      
