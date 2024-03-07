@@ -189,7 +189,7 @@ button#clear-button {
 }
 
 #nameSection label {
-    margin-right: 10px;
+    margin-right: 0px;
 }
 
 .question-set label {
@@ -202,12 +202,6 @@ button#clear-button {
 
 .name {
     display: none;
-}
-
-.container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
 }
 
 .visible {
