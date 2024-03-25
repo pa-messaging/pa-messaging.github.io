@@ -1,3 +1,9 @@
+/* The smooth scroll behavior is so when the output is generated
+    and the sreen jumps down it isn't jarring */
+/* Most of the code in this file is just to make things pretty */
+/* The code that is actually fundamental here is any code that applies
+    a "display: none" attribute */
+    
 html {
     scroll-behavior: smooth;
 }
@@ -196,6 +202,9 @@ button#clear-button {
     margin-top: 10px;
 }
 
+
+/* This is used to keep the questions hidden before selected */
+/* The questions will be revelaed using the JS file */
 .question-set {
     display: none;
 }
@@ -204,10 +213,14 @@ button#clear-button {
     display: none;
 }
 
+/* This is used to be mass applied in the JS file when the questions are selected */
 .visible {
     display: block;
 }
 
+/* Toggle is used for the questions that reveal other questions */
+/* This is pretty rare in the DMI messaging driver but very common
+    within the ticket drivers */
 .toggle {
     display: flex;
     justify-content: center;
