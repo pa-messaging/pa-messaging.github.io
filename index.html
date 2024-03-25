@@ -3,19 +3,27 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The following link is where the CSS is called -->
     <link rel="stylesheet" href="css/styles.css">
-	<title>Pennie Messaging</title>
+	<!-- Here is where you can change the title of the tab-->
+    <title>Pennie Messaging</title>
 </head>
 
 <body>
+
+<!-- Here is where you can change the title of the page-->
 <h1>Pennie DMI Messaging</h1>
 
 <main>
+    <!-- Don't touch the form ID or form-column class :) -->
 	<form id="paTicketDriver">
 		<div class="form-column">
 			<div>
+                <!-- The type lable is the dropdown that reveals the templates-->
 				<label for="type" >Type of Message:</label>
 				<select id="type" name="type" onchange="showQuestions()">
+                    <!-- Each option value is important and will be used 
+                        in the ID of the question-set classes -->
 					<option value="placeholder">Select Message Type</option>
                     <option value="internal">Internal Rejection / Approval Comment</option>
                     <option value="income">Income Document Rejection</option>
@@ -34,9 +42,14 @@
                     <option value="rop">Verification Document for ROP Reinstatement</option>
 				</select>
 			</div>
-			
-
-			<div class="question-set" id="incomeQuestions">
+            
+            <!-- The class will be set to question-set for every option -->
+            <!-- The ID will be the value from the dropdown option
+                followed by a CAPITALIZED 'Questions'-->
+            <div class="question-set" id="incomeQuestions">
+                <!-- The for id and name values will all be the same-->
+                <!-- they can be anything but leave them short and identifiable
+                    as they will be referenced within javascript -->
                 <label for="incomedoc">Document(s) that were submitted:</label>
                 <input type="text" id="incomedoc" name="incomedoc">
 
@@ -121,7 +134,10 @@
                 <label for="reviewapp">Matching data element in the application:</label>
                 <input type="text" id="reviewapp" name="reviewapp">
             </div>
-
+            
+            <!-- If you see any blank question sets it means they are using
+                one of the repetitive fields (like the name field)-->
+            <!-- Code comment for the name field will be found on line 202 -->
             <div class="question-set" id="nonpennieQuestions">
             </div>
 
@@ -184,28 +200,43 @@
 				<input type="text" id="ropdate" name="ropdate">
 			</div>
 
-			<div class="name" id="nameSection">
+			<!-- The name field is not tied to the dropdown using a
+                a question-set class-->
+            <!-- Instead it is refered to as a section and hidden from the start-->
+            <!-- It is hidden/revealed using CSS & JS-->
+            <div class="name" id="nameSection">
 				<label for="firstLast">Primary's First &amp; Last Name:&nbsp;&nbsp;
 					<input type="text" id="firstLast" name="firstLast">
                 </label>
 			</div>
 
-			<div class="formButtons">
-				<button id="generate-output-button" type="button" onclick="generateOutput(); scrollWin(0, 3000)">Generate Ticket</button>
+			<!-- These are the buttons at the bottom of the form-->
+            <!-- They are used to generate an output or clear the output-->
+            <!-- Probably just don't touch these-->
+            <!-- If you need to change the text on the buttons it is found
+                between the ""><""-->
+            <div class="formButtons">
+				<button id="generate-output-button" type="button" onclick="generateOutput(); scrollWin(0, 3000)">Generate Message</button>
 				<button id="clear-button" type="button" onclick="clearForm()">Reset Form</button>
 			</div>
 		</div>
 	</form>
 	
 	<div id="output-panel">
+        <!-- This is the section of the output panel,
+            you can change the title of the output panel in h3-->
 		<h3>Generated Message</h3>
 		<div id="output"></div>
-			<button id="copy-output-button" onclick="copyOutput()">Copy Ticket</button>
-		<h6>After copying, paste with CTRL + V or Right Click > Paste</h6>
+            <!-- The button here copies the formatted text-->
+            <!-- You can change the button text in between "><" -->
+			<button id="copy-output-button" onclick="copyOutput()">Copy Message</button>
+		<!-- The h6 here is to combat user error -->
+        <h6>After copying, paste with CTRL + V or Right Click > Paste</h6>
 	</div>
 	
 </main>
 
+<!-- Here is where the JavaScript that makes it all work is called -->
 <script src="js/script.js"></script>
 	
 </body>
