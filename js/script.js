@@ -1,17 +1,23 @@
 function showQuestions() {
+    /* This top variable sets all questions to hidden */
     var questionSets = document.querySelectorAll('.question-set');
     questionSets.forEach(function (set) {
         set.classList.remove('visible');
     });
 
+    /* This 2nd vailable retrieves which question has been selected */
     var selectedOption = document.getElementById('type').value;
 
+    /* The 3rd variable reveals the question-set class for the option value */
+    /* This is why the naming convention referenced on line 45 
+        of the HTML is key */
     var questionSet = document.getElementById(selectedOption + 'Questions');
     
     if (questionSet) {
         questionSet.classList.add('visible');
     }
 
+    /* This second if statement handles hiding/revealing the nameSection */
     if (selectedOption === 'rop' || selectedOption === 'internal') {
         nameSection.style.display = 'none';
     } else {
@@ -20,6 +26,12 @@ function showQuestions() {
 }
 
 function generateOutput() {
+
+    /* The variable list below is vital */
+    /* Everytime a new question field is created in HTML a corresponding
+        variable must be added here */
+    /* The sections are broken up by question-set */
+
     var selectedOption = document.getElementById('type').value;
     var questionSet = document.getElementById(selectedOption + 'Questions');
     
@@ -74,6 +86,15 @@ function generateOutput() {
     var ropexpiration = document.getElementById('ropexpiration').value;
     var ropdate = document.getElementById('ropdate').value;
     
+    /* The following cases handle the output text logic */
+    /* To add new questions you can copy and paste a new case and 
+        reference the variables to add a new output */
+    /* Non-dynamic text will be added using quotations */
+    /* Line breaks are added using <br> */
+    /* Everything must be combined using the + symbol */
+    /* The case title '' will be the id of each of the question-set divs */
+    /* You do not need to add the CAPITALIZED Questions to to title as it is
+        dynamically added/removed */
     if (questionSet) {
         var outputText = "";
         
@@ -139,12 +160,16 @@ function generateOutput() {
                 outputText += rop1stname + " " + roplastname + " (ID:" + hhidField + ") called in requesting reinstatement of the APTC amount of $" + ropaptc + " on the plan " + ropplan + " with Policy ID#" + roppolicy + " due to the expiration of ROP on " + ropexpiration + "<br><br>" + "#Verbal_Attestation_Completed_By_" + rop1stname + "_" + roplastname + "_For_" + ropaptc + "_On_" + ropdate;
             break;
 
-        default:
+        /* Make sure the default break is always last */
+            default:
             break;
     }
 
+        /* This is to add the generated text to the output panel */
         document.getElementById('output').innerHTML = outputText;
         
+        /* This is to add custom styling to the output panel to signify 
+            the moutput has been generated */
         var outputPanel = document.getElementById('output-panel');
         outputPanel.style.width = '100%';
         outputPanel.style.margin = '10px';
@@ -154,12 +179,16 @@ function generateOutput() {
         outputPanel.style.borderStyle = 'solid';
         outputPanel.style.boxShadow = '0 0 8px 8px rgba(34, 139, 34, 0.4)';
         
+        /* This changes the color of the copy output button to signify it 
+            can now be used */
         document.getElementById('copy-output-button').classList.add('generated');    }
 }
 
 function clearForm() {
+    /* This clears looks for all of the inputs in the form */
     var inputs = document.querySelectorAll('input[type="text"], input[type="number"], input[type="checkbox"], select, textarea');
     
+    /* This takes all found ^ inputs and clears/resets them */
     inputs.forEach(function (input) {
         if (input.type === 'checkbox') {
             input.checked = false;
@@ -168,18 +197,23 @@ function clearForm() {
         }
     });    
 
+    /* this handles the generic inputs that are independant of the dropdown */
     document.getElementById('firstLast').value = '';
     document.getElementById('nameSection').style.display = 'none';
     
+    /* This resets the dropdown */
     document.getElementById('type').selectedIndex = 0;
 
+    /* This hides all the previously revealed questions */
     var questionSets = document.querySelectorAll('.question-set');
     questionSets.forEach(function (set) {
         set.classList.remove('visible');
     });
 
+    /* This clears the output panel */
     document.getElementById('output').innerHTML = '';
 
+    /* This resets the styling of the output panel */
     var outputPanel = document.getElementById('output-panel');
     outputPanel.style.width = '100%';
     outputPanel.style.margin = '10px';
@@ -189,10 +223,13 @@ function clearForm() {
     outputPanel.style.borderStyle = 'solid';
     outputPanel.style.boxShadow = 'none';
 
+    /* This removes the styling of the copy output button */
     document.getElementById('copy-output-button').classList.remove('generated');
 }
 
 function copyOutput() {
+    /* This takes whatever text is in the output panel and copies it to 
+        the users clipboard */
     var outputContent = document.getElementById('output').innerText;
 
     var textarea = document.createElement('textarea');
@@ -202,9 +239,11 @@ function copyOutput() {
     document.execCommand('copy');
     document.body.removeChild(textarea);
 
-    alert('Ticket copied to clipboard!');
+    /* This generates a browser popup informing the user the output is copied */
+    alert('Message copied to clipboard!');
 }
 
+/* This funtion allows the user to use the Enter key to check/uncheck checkboxes */
 function handleCheckboxKeyPress(event) {
     if (event.key === 'Enter') {
       this.checked = !this.checked;
@@ -217,12 +256,16 @@ function handleCheckboxKeyPress(event) {
     checkbox.addEventListener('keydown', handleCheckboxKeyPress);
   });
 
+/* This funtion is used to scroll the users page down when the output
+  is generated */
 function scrollWin(x, y) {
     window.scrollBy(x, y);
 }
 
+/* The following two variables are used to create a custom auto-correct */
 var timeoutId;
 
+/* To add new words to the auto-correct format them exactly as found below */
 var wordReplacements = {
     'pa': 'PA',
     'Pa': 'PA',
@@ -277,6 +320,13 @@ var wordReplacements = {
     'tic': 'TIC'
 };
 
+/* This funtion is how the above list recognizes the text that has been inputted
+    and proceeds to autocorrect */
+/* The last value (currently set to 700) is the timeout variable */
+/* If the autocorrect delay is too quick or too fast then this can be adjusted */
+/* There may be a better way to do this but I couldn't hack it together while 
+    still avoiding dependancies */
+/* I advise not touching this */
 document.addEventListener('input', function(event) {
     if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
         clearTimeout(timeoutId);
